@@ -16,8 +16,6 @@ func binTodecimal(hexstr string) (int64, error) {
 	return strconv.ParseInt(hexstr, 2, 64)
 }
 
-
-
 // question 1/2 update
 func convertToDecimal(str string, base int) (int64, error) {
 	return strconv.ParseInt(str, base, 64)
@@ -25,7 +23,7 @@ func convertToDecimal(str string, base int) (int64, error) {
 
 // SUB QUESTION 2
 func contain(s string) bool {
-	if s == "bin" || s == "hex" || s == "low" || s == "cap" || s == "up"{
+	if s == "bin" || s == "hex" || s == "low" || s == "cap" || s == "up" {
 		return true
 	}
 	return false
@@ -68,6 +66,7 @@ func Capitaliseeachword(s string) string {
 	res := strings.ToLower(s)
 	return strings.Title(res)
 }
+
 // func CapitaliseEachWord(s string) string {
 // 	words := strings.Fields(strings.ToLower(s))
 
@@ -93,6 +92,7 @@ func isPunc(s string) bool {
 	}
 	return false
 }
+
 // func isPunc(s string) bool {
 // 	return strings.ContainsAny(s, ",!.?:;")
 // }
@@ -194,12 +194,10 @@ func main() {
 	fmt.Println(Capitaliseeachword("hello how are you doing"))
 	fmt.Println(fixart("this is A apple which is A orange A book"))
 
-
 	fmt.Println(IsPunctuation("!"))
 	fmt.Println(IsPunctuation("7"))
 	fmt.Println(IsPunctuation("G"))
 	fmt.Println(IsPunctuation(""))
-
 
 	fmt.Println(contain("bin"))
 	fmt.Println(contain("hex"))
