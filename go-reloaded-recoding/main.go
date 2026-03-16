@@ -33,7 +33,7 @@ func contain(s string) bool {
 func IsPunctuation(s string) string {
 	alpha := "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 	num := "0123456789"
-	specials := ",.?::;!"
+	specials := "/,.?::;!"
 	if len(s) != 1 {
 		return "invalid"
 	}
