@@ -288,6 +288,14 @@ func applyUp(s string) string {
 	return strings.Join(w, " ")
 }
 
+func unmatched(a []int) int {
+	result := 0
+	for _, v := range a {
+		result ^= v
+		}
+	return result
+}
+
 func main() {
 
 	fmt.Println(num("go reloaded project"))
@@ -362,4 +370,7 @@ func main() {
 	fmt.Println(contain("bin"))
 	fmt.Println(contain("hex"))
 	fmt.Println(contain("xyz"))
+
+	res := []int{1, 2, 3, 4, 5, 7, 9, 1, 2, 3, 4, 5, 7}
+	fmt.Println(unmatchN(res))
 }
