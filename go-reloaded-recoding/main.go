@@ -16,12 +16,12 @@ func binTodecimal(hexstr string) (int64, error) {
 	return strconv.ParseInt(hexstr, 2, 64)
 }
 
-// question 1/2 update
+// question 3
 func convertToDecimal(str string, base int) (int64, error) {
 	return strconv.ParseInt(str, base, 64)
 }
 
-// SUB QUESTION 2
+// QUESTION 4
 func contain(s string) bool {
 	if s == "bin" || s == "hex" || s == "low" || s == "cap" || s == "up" {
 		return true
@@ -29,7 +29,7 @@ func contain(s string) bool {
 	return false
 }
 
-// SUB QUESTION 3
+// QUESTION 5
 func IsPunctuation(s string) string {
 	alpha := "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 	num := "0123456789"
@@ -49,7 +49,7 @@ func IsPunctuation(s string) string {
 	return s
 }
 
-// question 3
+// question 6
 func capitaliseFirstWORD(s string) string {
 	return strings.ToUpper(s[:1]) + strings.ToLower(s[1:])
 }
@@ -61,23 +61,22 @@ func capitaliseFirstWORD(s string) string {
 // 	return strings.ToUpper(s[:1]) + strings.ToLower(s[1:])
 // }
 
-// question 3 update to capilize each word
-func Capitaliseeachword(s string) string {
-	res := strings.ToLower(s)
-	return strings.Title(res)
-}
-
-// func CapitaliseEachWord(s string) string {
-// 	words := strings.Fields(strings.ToLower(s))
-
-// 	for i := range words {
-// 		words[i] = strings.ToUpper(words[i][:1]) + words[i][1:]
-// 	}
-
-// 	return strings.Join(words, " ")
+// question 7 update to capilize each word
+// func capeveryword(s string) string {
+// 	res := strings.ToLower(s)
+// 	return strings.Title(res)
 // }
 
-// question 4
+func CapitaliseEachWord(s []string) string {
+	// 	words := strings.Fields(strings.ToLower(s))
+
+	for i := range s {
+		s[i] = strings.ToUpper(s[i][:1]) + s[i][1:]
+	}
+	return strings.Join(s, " ")
+}
+
+// question 8
 func capitaliseLastprevWord(s []string, n int) []string {
 	for i := len(s) - n; i < len(s); i++ {
 		s[i] = strings.ToUpper(s[i])
@@ -85,7 +84,7 @@ func capitaliseLastprevWord(s []string, n int) []string {
 	return s
 }
 
-// question 5
+// question 9
 func isPunc(s string) bool {
 	if s == "," || s == "!" {
 		return true
@@ -97,7 +96,7 @@ func isPunc(s string) bool {
 // 	return strings.ContainsAny(s, ",!.?:;")
 // }
 
-// question 6
+// question 10
 func removespacefrompunc(s []string) string {
 	res := ""
 	for i, t := range s {
@@ -109,7 +108,7 @@ func removespacefrompunc(s []string) string {
 	return res
 }
 
-// question 7
+// question 11
 func article(word string) string {
 	if strings.Contains("aeiouh", strings.ToLower(string(word[0]))) {
 		return "an"
@@ -117,7 +116,7 @@ func article(word string) string {
 	return "a"
 }
 
-// question 8
+// question 12
 func fixArticle(s string) string {
 	words := strings.Fields(s)
 
@@ -130,21 +129,183 @@ func fixArticle(s string) string {
 	return strings.Join(words, " ")
 }
 
-// alternative for no 8
+// alternative for no 13
 func fixart(s string) string {
 	s = strings.ReplaceAll(s, "A", "An")
 	s = strings.ReplaceAll(s, "An book", " A book")
 	return s
 }
 
-// question 9
+// question 14
 func fixsingleQuotes(text string) string {
 	text = strings.Trim(text, "'")
 	text = strings.TrimSpace(text)
 	return "'" + text + "'"
 }
 
+// question 15
+func num(s string) int {
+	return len(strings.Fields(s))
+}
+
+// question 16
+func firstword(s string) string {
+	return strings.Fields(s)[0]
+}
+
+// question 17
+func lastword(s string) string {
+	w := strings.Fields(s)
+	return w[len(w)-1]
+
+}
+
+// question 18
+func lastchar(s string) string {
+	if s == "" {
+		return ""
+	}
+
+	return string(s[len(s)-1])
+}
+
+// question 19
+func firstchar(s string) string {
+	return string(s[0])
+}
+
+// question 20
+func inte(s string) (int, error) {
+	return strconv.Atoi("10")
+}
+
+// question 21
+func uplastword(s string) string {
+	w := strings.Fields(s)
+	i := len(w) - 1
+	w[i] = strings.ToUpper(w[i])
+	return strings.Join(w, " ")
+}
+
+// question 22
+func extraspace(s string) string {
+	res := strings.Fields(s)
+	return strings.Join(res, " ")
+}
+
+// question 23
+func reverseword(s string) string {
+	w := strings.Fields(s)
+	for i, j := 0, len(w)-1; i < j; i, j = i+1, j-1 {
+		w[i], w[j] = w[j], w[i]
+	}
+	return strings.Join(w, " ")
+
+}
+
+// question 24
+func duplicatewords(s string) string {
+	r := []string{}
+	for _, v := range strings.Fields(s) {
+		r = append(r, v, v)
+	}
+	return strings.Join(r, " ")
+}
+
+// question 25
+func replaceword(s, old, new string) string {
+	w := strings.Fields(s)
+	for i := range w {
+		if w[i] == old {
+			w[i] = new
+		}
+	}
+	return strings.Join(w, " ")
+}
+
+// question 26
+func fixPunct(s string) string {
+	s = strings.ReplaceAll(s, " ,", ",")
+	s = strings.ReplaceAll(s, " !", "!")
+	return s
+}
+
+// question 27
+func fixQuotes(s string) string {
+	s = strings.TrimSpace(s)
+	s = strings.Trim(s, "'")
+	return "'" + strings.TrimSpace(s) + "'"
+}
+
+// question 28
+func removeWord(s, target string) string {
+	w := strings.Fields(s)
+	var r []string
+	for _, v := range w {
+		if v != target {
+			r = append(r, v)
+		}
+	}
+	return strings.Join(r, " ")
+}
+
+// question 29
+func uplowcap(s, mode string) string {
+	switch mode {
+	case "low":
+		return strings.ToLower(s)
+	case "up":
+		return strings.ToUpper(s)
+	case "cap":
+		w := strings.Fields(s)
+		for i := range w {
+			w[i] = strings.ToUpper(w[i][:1]) + strings.ToLower(w[i][1:])
+		}
+		return strings.Join(w, " ")
+	default:
+		return s
+	}
+}
+
+// question 30
+func removeCommand(words []string, index int) []string {
+	if index < 0 || index >= len(words) {
+		return words
+	}
+	return append(words[:index], words[index+1:]...)
+}
+
+// question 31
+func applyUp(s string) string {
+	w := strings.Fields(s)
+	for i := 0; i < len(w); i++ {
+		if w[i] == "(up)" && i > 0 {
+			w[i-1] = strings.ToUpper(w[i-1])
+			w = append(w[:i], w[i+1:]...)
+			i--
+		}
+	}
+	return strings.Join(w, " ")
+}
+
 func main() {
+
+	fmt.Println(num("go reloaded project"))
+	fmt.Println(firstword("go reloaded project"))
+	fmt.Println(lastword("go reloaded project"))
+	fmt.Println(inte("10"))
+	fmt.Println(firstchar("hello"))
+	fmt.Println(lastchar(""))
+	fmt.Println(lastchar("hello"))
+	fmt.Println(uplastword("hello  word"))
+	fmt.Println(uplastword("hello how are you"))
+	//fmt.Println(capeveryword("how are YOU DoiNg"))
+	fmt.Println(extraspace(" hello  world   dear "))
+	fmt.Println(reverseword("hello world"))
+	fmt.Println(duplicatewords("hello world"))
+	fmt.Println(replaceword("hello word com", "word", "world"))
+	fmt.Println(removeCommand([]string{"go", "(up)"}, 2))
+	fmt.Println(removespacefrompunc([]string{"hello", ",", "world"}))
 
 	// question 1
 	fmt.Println(hexTodecimal("1E"))
@@ -191,7 +352,6 @@ func main() {
 	fmt.Println(convertToDecimal("77", 8))
 	fmt.Println(convertToDecimal("1E", 16))
 
-	fmt.Println(Capitaliseeachword("hello how are you doing"))
 	fmt.Println(fixart("this is A apple which is A orange A book"))
 
 	fmt.Println(IsPunctuation("!"))
