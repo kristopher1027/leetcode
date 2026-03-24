@@ -236,6 +236,19 @@ func fixQuotes(s string) string {
 	s = strings.Trim(s, "'")
 	return "'" + strings.TrimSpace(s) + "'"
 }
+func processHex(w []string) []string {
+	var r []string
+
+	for _, word := range w {
+		if word == "(hex)" && len(r) > 0 {
+			n, _ := strconv.ParseInt(r[len(r)-1], 16, 64)
+			r[len(r)-1] = strconv.FormatInt(n, 10)
+			continue
+		}
+		r = append(r, word)
+	}
+	return r
+}
 
 // question 28
 func removeWord(s, target string) string {
