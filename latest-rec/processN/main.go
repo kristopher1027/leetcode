@@ -42,11 +42,14 @@ import (
 func process(input []string) []string {
 	var result []string
 	for i := 0; i < len(input); i++ {
+
 		if strings.HasPrefix(input[i], "(") {
-			cmd := strings.Trim(strings.TrimSuffix(input[i], ","), "( )")
+			val := strings.TrimSuffix(input[i], ",")
+			command := strings.Trim(val, "( )")
 			n := 1
 			if i+1 < len(input) {
-				if val, err := strconv.Atoi(strings.Trim(input[i+1], ")")); err == nil {
+				yea := strings.Trim(input[i+1], ")")
+				if val, err := strconv.Atoi(yea); err == nil {
 					n = val
 					i++
 				}
@@ -56,7 +59,7 @@ func process(input []string) []string {
 			}
 			start := len(result) - n
 			for j := start; j < len(result); j++ {
-				switch cmd {
+				switch command {
 				case "up":
 					result[j] = strings.ToUpper(result[j])
 				case "low":
@@ -76,5 +79,5 @@ func process(input []string) []string {
 
 func main() {
 	fmt.Println(process([]string{"this", "is", "so", "fun", "(up,", "2)"}))
-	fmt.Println(process([]string{"hello", "world", "(cap)"}))
+	fmt.Println(process([]string{"hello", "world", "(up)"}))
 }
