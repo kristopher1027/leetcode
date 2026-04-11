@@ -6,8 +6,8 @@ import (
 	"strings"
 )
 
-func proces(word []string) []string {
-	//word := strings.Fields(s)
+func proces(s string) string {
+	word := strings.Fields(s)
 	result := make([]string, len(word))
 	copy(result, word)
 
@@ -53,6 +53,6 @@ func proces(word []string) []string {
 			}
 		}
 	}
-	return result
+	return strings.Join(result, " ")
 
 }

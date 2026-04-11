@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"os"
-	"strings"
 )
 
 func main() {
@@ -15,14 +14,17 @@ func main() {
 	if err != nil {
 		fmt.Println("error input:", err)
 	}
-	result := strings.Fields(string(val))
-	result = applycase(result)
-	result = proces(result)
-	result1 := strings.Join(result, " ")
+	input := string(val)
+	result := processor(input)
 
-	if err != os.WriteFile(os.Args[2], []byte(result1), 0664) {
+	if err != os.WriteFile(os.Args[2], []byte(result), 0664) {
 		fmt.Println("error", err)
 	}
 
-	fmt.Println(string(val))
+	//fmt.Println("processed successful:")
+}
+func processor(input string) string {
+	input = proces(input)
+	input = applycase(input)
+	return input + "\n"
 }

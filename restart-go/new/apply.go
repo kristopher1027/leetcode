@@ -5,8 +5,8 @@ import (
 	"strings"
 )
 
-func applycase(word []string) []string {
-	//word := strings.Fields(s)
+func applycase(s string) string {
+	word := strings.Fields(s)
 
 	var result []string
 
@@ -46,7 +46,7 @@ func applycase(word []string) []string {
 		}
 
 	}
-	return result
+	return strings.Join(result, " ")
 }
 
 // func main() {
