@@ -6,8 +6,8 @@ import (
 	"strings"
 )
 
-func proces(s string) string {
-	word := strings.Fields(s)
+func proces(word []string) []string {
+	//word := strings.Fields(s)
 	result := make([]string, len(word))
 	copy(result, word)
 
@@ -18,7 +18,7 @@ func proces(s string) string {
 				result[i-1] = strings.ToUpper(result[i-1])
 			}
 			result = append(result[:i], result[i+1:]...)
-			i--
+
 		case "(low)":
 			if i > 0 {
 				result[i-1] = strings.ToLower(result[i-1])
@@ -53,6 +53,6 @@ func proces(s string) string {
 			}
 		}
 	}
-	return strings.Join(result, " ")
+	return result
 
 }

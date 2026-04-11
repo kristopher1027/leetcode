@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"strconv"
 	"strings"
 )
@@ -49,7 +48,8 @@ func applycase(word []string) []string {
 	}
 	return result
 }
-func main() {
-	fmt.Println(applycase([]string{"this", "is", "so", "fun", "(up,", "2)"}))
-	fmt.Println(applycase([]string{"hello", "world", "(up)"}))
-}
+
+// func main() {
+// 	fmt.Println(applycase([]string{"this", "is", "so", "fun", "(up,", "2)"}))
+// 	fmt.Println(applycase([]string{"hello", "world", "(up)"}))
+// }
