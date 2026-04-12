@@ -21,10 +21,13 @@ func main() {
 		fmt.Println("error", err)
 	}
 
-	//fmt.Println("processed successful:")
+	fmt.Println("processed successful:")
 }
 func processor(input string) string {
 	input = proces(input)
 	input = applycase(input)
+	input = fixpunc(input)
+	input = article(input)
+	input = fixquote(input)
 	return input + "\n"
 }

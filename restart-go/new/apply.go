@@ -14,6 +14,7 @@ func applycase(s string) string {
 		if strings.HasPrefix(word[i], "(") {
 			val := strings.TrimSuffix(word[i], ",")
 			command := strings.Trim(val, "()")
+			// "(cap,","2)"
 
 			n := 1
 			if i+1 < len(word) {
