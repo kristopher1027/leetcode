@@ -5,6 +5,7 @@ import (
 )
 
 func fixpunc(word string) string {
+
 	s := strings.Fields(word)
 	result := ""
 	for i, t := range s {
@@ -13,5 +14,10 @@ func fixpunc(word string) string {
 		}
 		result += t
 	}
-	return result + " "
+	return result
+}
+func multipunc(s string) string {
+	s = strings.ReplaceAll(s, ". . .", "...")
+	s = strings.ReplaceAll(s, " ?!", "?!")
+	return s
 }

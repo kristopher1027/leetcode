@@ -14,14 +14,14 @@ func applycase(s string) string {
 		if strings.HasPrefix(word[i], "(") {
 			val := strings.TrimSuffix(word[i], ",")
 			command := strings.Trim(val, "()")
-			// "(cap,","2)"
 
 			n := 1
 			if i+1 < len(word) {
-				yea := strings.Trim(word[i+1], ")")
-				if val, err := strconv.Atoi(yea); err == nil {
-					n = val
+				val := strings.Trim(word[i+1], ")")
+				if re, err := strconv.Atoi(val); err == nil {
+					n = re
 					i++
+
 				}
 			}
 			if n > len(result) {
@@ -29,19 +29,16 @@ func applycase(s string) string {
 			}
 			for j := len(result) - n; j < len(result); j++ {
 				switch command {
-				case "up":
-					result[j] = strings.ToUpper(result[j])
 				case "low":
 					result[j] = strings.ToLower(result[j])
+				case "up":
+					result[j] = strings.ToUpper(result[j])
 				case "cap":
 					if len(result[j]) > 0 {
-
-						result[j] = strings.ToUpper(result[j][:1]) + strings.ToLower(result[j][1:])
+						result[j] = strings.ToUpper(result[j][:1]) + strings.ToUpper(result[j][1:])
 					}
 				}
-
 			}
-
 		} else {
 			result = append(result, word[i])
 		}
@@ -49,8 +46,3 @@ func applycase(s string) string {
 	}
 	return strings.Join(result, " ")
 }
-
-// func main() {
-// 	fmt.Println(applycase([]string{"this", "is", "so", "fun", "(up,", "2)"}))
-// 	fmt.Println(applycase([]string{"hello", "world", "(up)"}))
-// }

@@ -29,5 +29,7 @@ func processor(input string) string {
 	input = fixpunc(input)
 	input = article(input)
 	input = fixquote(input)
+	input = multipunc(input)
+
 	return input + "\n"
 }
