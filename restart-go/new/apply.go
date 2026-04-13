@@ -35,7 +35,7 @@ func applycase(s string) string {
 					result[j] = strings.ToUpper(result[j])
 				case "cap":
 					if len(result[j]) > 0 {
-						result[j] = strings.ToUpper(result[j][:1]) + strings.ToUpper(result[j][1:])
+						result[j] = strings.ToUpper(result[j][:1]) + strings.ToLower(result[j][1:])
 					}
 				}
 			}
